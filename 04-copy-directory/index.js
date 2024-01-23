@@ -3,6 +3,10 @@ const path = require('path');
 
 let files = './04-copy-directory/files';
 
+async function deleteDir() {
+  fs.rmdir(`./04-copy-directory/files-copy/`, () => { 
+  }); 
+}
  async function createDir() {
   fs.mkdir(path.join('./04-copy-directory/', 'files-copy'),
   (err) => {
@@ -38,4 +42,4 @@ function copyFileInDir(n) {
   });
 }
 
-createDir().then(readDirectory());
+deleteDir().then(createDir()).then(readDirectory());
